@@ -370,21 +370,14 @@ def game_loop(username):
             # Rotate the frame to vertical orientation
             frame = cv.rotate(frame, cv.ROTATE_90_COUNTERCLOCKWISE)
 
-            # Split screen setup
-            left_screen = pygame.Surface((window_size[0] // 2, window_size[1]))
-            right_screen = pygame.Surface((window_size[0] // 2, window_size[1]))
-
-            # Process the camera frame
+            # Process the camera frame for pose detection (but don't display it)
             frame.flags.writeable = False
             frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
             results = pose.process(frame)
             frame.flags.writeable = True
 
-            # Draw the camera frame on the left screen
-            frame = cv.cvtColor(frame, cv.COLOR_RGB2BGR)
-            frame = cv.resize(frame, (window_size[0] // 2, window_size[1]))
-            frame_surface = pygame.surfarray.make_surface(frame)
-            left_screen.blit(frame_surface, (0, 0))
+            # Draw the game background on full screen
+            screen.blit(background_img, (0, 0))
 
             if results.pose_landmarks:
                 landmarks = results.pose_landmarks.landmark
@@ -402,32 +395,8 @@ def game_loop(username):
                 if bird_frame.top < 0: bird_frame.y = 0
                 if bird_frame.bottom > window_size[1]: bird_frame.y = window_size[1] - bird_frame.height
 
-                for connection in mp_pose.POSE_CONNECTIONS:
-                    start_idx = connection[0]
-                    end_idx = connection[1]
-                    start_landmark = landmarks[start_idx]
-                    end_landmark = landmarks[end_idx]
-
-                    start_pos = (int(start_landmark.y * (window_size[0] // 2)), int(start_landmark.x * window_size[1]))
-                    end_pos = (int(end_landmark.y * (window_size[0] // 2)), int(end_landmark.x * window_size[1]))
-                    
-                    pygame.draw.line(left_screen, (30, 30, 30), start_pos, end_pos, 8)
-                    pygame.draw.line(left_screen, (100, 100, 100), start_pos, end_pos, 4)
-
-                for landmark in landmarks:
-                    x = int(landmark.y * (window_size[0] // 2))  # Vertical axis as horizontal
-                    y = int(landmark.x * window_size[1])        # Horizontal axis as vertical
-
-                    glow_radius = 20
-                    glow_surface = create_circular_gradient((glow_radius * 2, glow_radius * 2), (50, 50, 50), (0, 0, 0))
-                    left_screen.blit(glow_surface, (x - glow_radius, y - glow_radius))
-                    pygame.draw.circle(left_screen, (255, 255, 255), (x, y), 10)
-                    pygame.draw.circle(left_screen, (0, 0, 0), (x, y), 12, 2)
-
             
-            # Draw the game on the right screen
-            right_screen.blit(background_img, (0, 0))
-
+            # Update pipe positions
             for pf in pipe_frames:
                 pf[0].x -= int(pipe_velocity())
                 pf[1].x -= int(pipe_velocity())
@@ -435,7 +404,8 @@ def game_loop(username):
             if len(pipe_frames) > 0 and pipe_frames[0][0].right < 0:
                 pipe_frames.popleft()
 
-            right_screen.blit(bird_img, bird_frame)
+            # Draw the game elements on the full screen
+            screen.blit(bird_img, bird_frame)
                         
             checker = True
             for pf in pipe_frames:
@@ -445,20 +415,20 @@ def game_loop(username):
                         score += 1
                         didUpdateScore = True
                         pipe_pass_sound.play()  # Play pipe pass sound
-                right_screen.blit(pipe_img, pf[1])
-                right_screen.blit(pygame.transform.flip(pipe_img, 0, 1), pf[0])
+                screen.blit(pipe_img, pf[1])
+                screen.blit(pygame.transform.flip(pipe_img, 0, 1), pf[0])
             if checker: didUpdateScore = False
 
-            # Create a semi-transparent overlay for the score panel
+            # Create a semi-transparent overlay for the score panel in the top-left
             score_panel = create_transparent_surface(window_size[0]//4, window_size[1]//6)
-            score_panel_rect = score_panel.get_rect(topleft=(10, 10))
-            right_screen.blit(score_panel, score_panel_rect)
+            score_panel_rect = score_panel.get_rect(topleft=(10, 10))  # Position on top-left
+            screen.blit(score_panel, score_panel_rect)
 
             font_size = int(window_size[1]/20)
             font = pygame.font.SysFont("Helvetica Bold.ttf", font_size)
             
             # Draw game information with shadow effect
-            y_offset = 20
+            y_offset = 30  # Start from top
             texts = [
                 f'Player: {username}',
                 f'Stage: {stage}',
@@ -467,13 +437,9 @@ def game_loop(username):
             ]
             
             for text in texts:
-                draw_text_with_shadow(right_screen, text, font, WHITE, 
+                draw_text_with_shadow(screen, text, font, WHITE, 
                                     (20, y_offset))
                 y_offset += 35
-
-            # Blit both screens to the main screen
-            screen.blit(left_screen, (0, 0))
-            screen.blit(right_screen, (window_size[0] // 2, 0))
 
             pygame.display.flip()
 
