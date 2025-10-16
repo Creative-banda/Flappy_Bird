@@ -135,7 +135,7 @@ def show_start_screen():
     score_font = pygame.font.SysFont("Helvetica Bold.ttf", 32)
 
     # Background image
-    bg_image = pygame.image.load("assets/images/flappy_bg.jpeg")
+    bg_image = pygame.image.load("assets/images/flappy_bg.png")
     bg_image = pygame.transform.scale(bg_image, window_size)
 
     # Clock for animations
