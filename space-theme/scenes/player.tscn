@@ -1,0 +1,139 @@
+[gd_scene load_steps=25 format=3 uid="uid://gbeo50m37ltw"]
+
+[ext_resource type="Texture2D" uid="uid://bl6pn0eiogn61" path="res://assets/ship_assets/Ship.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bn7cppw0pgewp" path="res://scenes/player.gd" id="1_y4r1p"]
+[ext_resource type="PackedScene" uid="uid://cnfteavawaa0g" path="res://scenes/bullet.tscn" id="2_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://dugwsm3nelec2" path="res://assets/ship_assets/Exhaust/Turbo_flight/Ship1_turbol_flight_001.png" id="2_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://bclim51os2v6c" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_001.png" id="3_i4ail"]
+[ext_resource type="Texture2D" uid="uid://wyjuc1824pcd" path="res://assets/ship_assets/Exhaust/Turbo_flight/Ship1_turbol_flight_003.png" id="3_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://cos0r3hvlm7xb" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_003.png" id="4_a38lo"]
+[ext_resource type="Texture2D" uid="uid://dvui8sg0nnynk" path="res://assets/ship_assets/Exhaust/Turbo_flight/Ship1_turbol_flight_005.png" id="4_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://dikk4i3gsd1yu" path="res://assets/ship_assets/Exhaust/Turbo_flight/Ship1_turbol_flight_007.png" id="5_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://b1hnq8qwq3f6q" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_008.png" id="5_4ni07"]
+[ext_resource type="Texture2D" uid="uid://dmkjv1yodvin8" path="res://assets/ship_assets/Exhaust/Normal_flight/Ship1_normal_flight_001.png" id="6_jej6c"]
+[ext_resource type="Texture2D" uid="uid://blqollrndboue" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_009.png" id="6_l71n6"]
+[ext_resource type="Texture2D" uid="uid://8uwi1xi5pytl" path="res://assets/ship_assets/Exhaust/Normal_flight/Ship1_normal_flight_003.png" id="7_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://dkty4f3osjor7" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_012.png" id="7_ke2ow"]
+[ext_resource type="Texture2D" uid="uid://bs5jrjob77t00" path="res://assets/ship_assets/Exhaust/Normal_flight/Ship1_normal_flight_005.png" id="8_oprun"]
+[ext_resource type="Texture2D" uid="uid://bx4k27bojm7ol" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_013.png" id="8_ujl30"]
+[ext_resource type="Texture2D" uid="uid://dko7utk1c33ir" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_014.png" id="9_31cv2"]
+[ext_resource type="Texture2D" uid="uid://crtw1knev338q" path="res://assets/ship_assets/Exhaust/Normal_flight/Ship1_normal_flight_007.png" id="9_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://ciyf53thexj1k" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_017.png" id="10_pf23h"]
+[ext_resource type="Texture2D" uid="uid://cnjxt3ugeq5xu" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_019.png" id="11_dt7fs"]
+[ext_resource type="Texture2D" uid="uid://bdlc1u8i2eb5f" path="res://assets/ship_assets/Ship1_Explosion/Ship1_Explosion_020.png" id="12_wqfne"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wnwbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i4ail")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a38lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4ni07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l71n6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ke2ow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ujl30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_31cv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pf23h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dt7fs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wqfne")
+}],
+"loop": false,
+"name": &"blast",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3vyb7")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fulsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ur7pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y4r1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d2wvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3v2ag")
+}],
+"loop": true,
+"name": &"exhaust",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jej6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f1ej7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oprun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a8ls1")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfm1y"]
+size = Vector2(58, 26)
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+texture_filter = 1
+script = ExtResource("1_y4r1p")
+bullet_scene = ExtResource("2_d2wvv")
+
+[node name="player_animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wnwbv")
+animation = &"normal"
+autoplay = "normal"
+
+[node name="flame" type="AnimatedSprite2D" parent="."]
+position = Vector2(-44, 1)
+sprite_frames = SubResource("SpriteFrames_fulsm")
+animation = &"normal"
+autoplay = "normal"
+frame_progress = 0.494129
+
+[node name="Shoot_Position" type="Marker2D" parent="."]
+position = Vector2(52, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_qfm1y")
+
+[connection signal="animation_finished" from="player_animation" to="." method="_on_player_animation_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

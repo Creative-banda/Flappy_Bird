@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1gtworhgffxc"]
+
+[ext_resource type="Texture2D" uid="uid://d2usth3dlmejv" path="res://assets/background_image.jpg" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://brmo1wwnlpg3a" path="res://scenes/main.gd" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://gbeo50m37ltw" path="res://scenes/player.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dfjkehhvhp8rb" path="res://scenes/obstical.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://ovd5nrsp3uft" path="res://scenes/enemy.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://n3neharji8cy" path="res://scenes/item.tscn" id="4_tefeu"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_sugp2")
+obstical_scene = ExtResource("2_jyhfs")
+enemy_scene = ExtResource("3_tbgi4")
+item_scene = ExtResource("4_tefeu")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 1154.0
+offset_bottom = 649.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o5qli")
+expand_mode = 1
+
+[node name="Background2" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1151.0
+offset_right = 2302.0
+offset_bottom = 649.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o5qli")
+expand_mode = 1
+
+[node name="player" parent="." instance=ExtResource("2_0wfyh")]
+position = Vector2(110, 343)

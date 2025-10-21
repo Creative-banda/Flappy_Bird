@@ -1,3 +1,13 @@
 .DS_Store
 react
 my_new_env
+
+# Godot 4+ specific ignores
+space-theme/.godot/
+space-theme/android/
+space-theme/.import/
+space-theme/.mono/
+space-theme/.vs/
+space-theme/.vscode/
+space-theme/.idea/
+space-theme/.cache/

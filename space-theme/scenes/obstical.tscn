@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfjkehhvhp8rb"]
+
+[ext_resource type="Script" uid="uid://cj4sbxysyuqrm" path="res://obstical.gd" id="1_4c8py"]
+[ext_resource type="Texture2D" uid="uid://dek37wutccrqw" path="res://assets/obstical/0.png" id="2_4c8py"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eehi4"]
+radius = 14.0357
+
+[node name="Obstical" type="Node2D" groups=["obstacle"]]
+script = ExtResource("1_4c8py")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_4c8py")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_eehi4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

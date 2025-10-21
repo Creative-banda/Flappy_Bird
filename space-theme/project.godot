@@ -1,0 +1,38 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Cosmo Drift"
+run/main_scene="uid://cv6784jwmo40"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="uid://dwikrkot6sf1d"
+
+[autoload]
+
+AudioManager="*res://scenes/audio_manager.tscn"
+Globals="*res://scenes/globals.tscn"
+UI="*res://scenes/ui.tscn"
+
+[display]
+
+window/size/mode=4
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+
+[global_group]
+
+player=""
+obstacle=""
+enemy=""
+
+[rendering]
+
+renderer/rendering_method="mobile"

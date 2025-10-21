@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6shxfhqnqg07"]
+
+[ext_resource type="FontFile" uid="uid://bk1jb74nw0kv2" path="res://assets/font/space_pixel_font.ttf" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://bjepso7eb05hp" path="res://scenes/ui.gd" id="1_x4jx1"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_x4jx1")
+
+[node name="Health" type="Label" parent="."]
+texture_filter = 1
+offset_left = 7.0
+offset_top = 12.0
+offset_right = 197.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("1_nt7q6")
+theme_override_font_sizes/font_size = 25
+
+[node name="Bullets" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -203.0
+offset_top = 19.0
+offset_right = -13.0
+offset_bottom = 44.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_nt7q6")
+theme_override_font_sizes/font_size = 25
+
+[node name="Score" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.0
+offset_top = 16.0
+offset_right = 95.0
+offset_bottom = 41.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_nt7q6")
+theme_override_font_sizes/font_size = 25

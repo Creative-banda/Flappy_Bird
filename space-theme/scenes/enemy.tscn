@@ -1,0 +1,137 @@
+[gd_scene load_steps=22 format=3 uid="uid://ovd5nrsp3uft"]
+
+[ext_resource type="Script" uid="uid://c7or0plj2gp8r" path="res://scenes/enemy.gd" id="1_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://mm0ffummcoa4" path="res://assets/enemy/Ship3/Ship3.png" id="2_md0e3"]
+[ext_resource type="Texture2D" uid="uid://bfptbm2i22wbl" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_000.png" id="3_shcg2"]
+[ext_resource type="Texture2D" uid="uid://pbjwxh7cups4" path="res://assets/enemy/Ship3/Exhaust/Normal_flight/Exhaust1/exhaust1.png" id="3_xwavj"]
+[ext_resource type="Texture2D" uid="uid://1lgmqvoqhlpx" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_004.png" id="4_ile5s"]
+[ext_resource type="Texture2D" uid="uid://7ve5els84l47" path="res://assets/enemy/Ship3/Exhaust/Normal_flight/Exhaust1/exhaust2.png" id="4_nenq2"]
+[ext_resource type="Texture2D" uid="uid://y83lnyek5yuv" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_005.png" id="5_1x4g4"]
+[ext_resource type="Texture2D" uid="uid://y7plqhqd0nmn" path="res://assets/enemy/Ship3/Exhaust/Normal_flight/Exhaust1/exhaust3.png" id="5_md484"]
+[ext_resource type="Texture2D" uid="uid://c0ngn0kvuigr" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_007.png" id="6_2pwtc"]
+[ext_resource type="Texture2D" uid="uid://bj1yj7nrdrr1" path="res://assets/enemy/Ship3/Exhaust/Normal_flight/Exhaust1/exhaust4.png" id="6_ipns3"]
+[ext_resource type="Texture2D" uid="uid://cbmc1k1vr5hrl" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_009.png" id="7_rogs8"]
+[ext_resource type="Texture2D" uid="uid://dpoubh01my838" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_012.png" id="8_wrm80"]
+[ext_resource type="Texture2D" uid="uid://c2i6v63tvip6r" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_013.png" id="9_6awcb"]
+[ext_resource type="Texture2D" uid="uid://wehthxtdgth0" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_015.png" id="10_wjec0"]
+[ext_resource type="Texture2D" uid="uid://bse2skqt2bryn" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_018.png" id="11_i4rgx"]
+[ext_resource type="Texture2D" uid="uid://bbxq01kkp8ga8" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_019.png" id="12_2mchx"]
+[ext_resource type="Texture2D" uid="uid://cykyw4wcxuqv6" path="res://assets/enemy/Ship3/Ship3_Explosion/Ship3_Explosion_021.png" id="13_t3vcr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s1ycm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_md0e3")
+}],
+"loop": true,
+"name": &"enemy_1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_shcg2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ile5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1x4g4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2pwtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rogs8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wrm80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6awcb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wjec0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i4rgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2mchx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_t3vcr")
+}],
+"loop": false,
+"name": &"enemy_1_die",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shcg2"]
+size = Vector2(39.75, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(35, 807)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8qclf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xwavj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nenq2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_md484")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ipns3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_4ra3w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_s1ycm")
+animation = &"enemy_1"
+autoplay = "enemy_1"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 1.125)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_shcg2")
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -444.5)
+shape = SubResource("RectangleShape2D_md0e3")
+
+[node name="Shoot_Position" type="Marker2D" parent="."]
+position = Vector2(-48, 4)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(65, -9.53674e-07)
+scale = Vector2(1.5625, 1.5625)
+sprite_frames = SubResource("SpriteFrames_8qclf")
+autoplay = "default"
+frame_progress = 0.97615
+flip_h = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
