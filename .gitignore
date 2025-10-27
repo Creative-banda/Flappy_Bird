@@ -1,6 +1,6 @@
 .DS_Store
 react
-my_new_env
+env/
 
 # Godot 4+ specific ignores
 space-theme/.godot/

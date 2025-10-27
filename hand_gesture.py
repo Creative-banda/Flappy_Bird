@@ -18,7 +18,7 @@ mp_drawing = mp.solutions.drawing_utils
 cap = cv2.VideoCapture(0)
 
 # --- State and Threshold Variables ---
-PINCH_THRESHOLD = 30
+PINCH_THRESHOLD = 20
 last_sent_message = "" # Prevents sending the same message every frame
 
 print("Starting hand gesture detection. Press 'ESC' to quit.")
@@ -88,7 +88,6 @@ while cap.isOpened():
     # Send only if the data has changed to avoid flooding
     if json_data != last_sent_message:
         sock.sendto(json_data.encode(), (UDP_IP, UDP_PORT))
-        print(f"Sent: {json_data}") # For debugging
         last_sent_message = json_data
 
     cv2.imshow('Controller', image)

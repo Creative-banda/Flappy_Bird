@@ -36,13 +36,13 @@ func _process(_delta: float) -> void:
 	add_parallax_effect(1.0)
 	
 	# Spawn obstical on a random interval using random.randi
-	if randi() % 100 < 1:  # ~2% chance each frame
+	if randi() % int(100 / Globals.game_speed) < 1:  # Spawn rate increases as game speed increases
 		var obstical_instance = obstical_scene.instantiate()
 		obstical_instance.position = Vector2(screen_width, randf() * screen_height)
 		get_parent().add_child(obstical_instance)
 
 	# Spawn enemy on a random interval using random.randi
-	if randi() % 200 < 1:  # ~1% chance each frame
+	if randi() % int(150 / Globals.game_speed) < 1:  # Spawn rate decreases as game speed increases
 		var enemy_instance = enemy_scene.instantiate()
 		enemy_instance.position = Vector2(screen_width, randf() * screen_height)
 		# Scale the enemy between 1.5 to 2.5 times its original size
