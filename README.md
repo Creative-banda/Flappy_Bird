@@ -41,7 +41,7 @@ mediapipe
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd hand-gesture-space-shooter
+   cd Hand-Gesture-Games
    ```
 
 2. **Install Python dependencies**
