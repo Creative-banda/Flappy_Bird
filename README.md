@@ -1,13 +1,13 @@
-# Hand Gesture Controlled Space Shooter
+# Hand Gesture Controlled Games
 
-A real-time hand gesture controlled space shooter game that combines computer vision with gaming. Control your spaceship using hand movements and shoot enemies by pinching your fingers together!
+A real-time hand gesture detection system that can be used to control various games. This repository contains the hand gesture detection component that captures hand movements and sends control data via UDP.
 
 ## 🎮 How It Works
 
-This project consists of two main components:
+This project provides:
 
 1. **Hand Gesture Detection** (`hand_gesture.py`) - Uses your webcam to detect hand gestures and sends control data via UDP
-2. **Space Shooter Game** (`space-theme/`) - A Godot-based space shooter that receives gesture data and responds in real-time
+2. **Game Integration** - The gesture data can be used to control external games like the space shooter game
 
 ## 🚀 Features
 
@@ -40,18 +40,28 @@ mediapipe
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Creative-banda/Hand-Gesture-Games.git
    cd Hand-Gesture-Games
    ```
 
-2. **Install Python dependencies**
+2. **Switch to the space-theme branch**
+   ```bash
+   git checkout space-theme
+   ```
+
+3. **Install Python dependencies**
    ```bash
    pip install opencv-python mediapipe
    ```
 
-3. **Open the game in Godot**
+4. **Clone the space shooter game**
+   ```bash
+   git clone https://github.com/Creative-banda/Cosmic-Rush.git
+   ```
+
+5. **Open the game in Godot**
    - Launch Godot Engine
-   - Import the `space-theme` project
+   - Import the `Cosmic-Rush` project
    - Open `project.godot`
 
 ## 🎯 How to Play
@@ -62,7 +72,8 @@ mediapipe
    ```
 
 2. **Launch the game**
-   - Run the project in Godot
+   - Open the `Cosmic-Rush` project in Godot
+   - Run the project
    - The game will automatically listen for UDP data on port 5005
 
 3. **Control your spaceship**
@@ -96,21 +107,7 @@ In the Godot project:
 | Pinch Fingers | Shoot bullets |
 | No Hand Detected | Spaceship stays in center |
 
-## 📁 Project Structure
 
-```
-├── hand_gesture.py          # Hand gesture detection script
-├── react/                   # Additional assets
-├── space-theme/            # Godot game project
-│   ├── scenes/            # Game scenes and scripts
-│   │   ├── player.gd     # Player controller with UDP input
-│   │   ├── main.gd       # Main game logic
-│   │   ├── enemy.gd      # Enemy behavior
-│   │   └── ...           # Other game components
-│   ├── assets/           # Game assets (sprites, sounds)
-│   └── project.godot     # Godot project configuration
-└── README.md             # This file
-```
 
 ## 🔍 Troubleshooting
 
@@ -143,8 +140,8 @@ In the Godot project:
 3. Modify `player.gd` to handle new gesture data
 
 ### Game Modifications
-- Edit scenes in Godot to change game mechanics
-- Modify spawn rates and difficulty scaling in `main.gd`
+- Edit scenes in the Cosmic-Rush Godot project to change game mechanics
+- Modify spawn rates and difficulty scaling
 - Add new enemy types or power-ups
 
 ## 🤝 Contributing
